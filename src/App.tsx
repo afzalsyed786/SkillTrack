@@ -4,6 +4,7 @@ import {
   Outlet,
   Route,
   Routes,
+  Link,
 } from "react-router-dom";
 import { Toaster } from "sonner";
 
@@ -46,19 +47,19 @@ function Home() {
         </p>
 
         <div className="mt-8 flex justify-center gap-3">
-          <a
-            href="/login"
+          <Link
+            to="/login"
             className="rounded-lg bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700"
           >
             Login
-          </a>
+          </Link>
 
-          <a
-            href="/register"
+          <Link
+            to="/register"
             className="rounded-lg border border-slate-300 px-5 py-3 font-semibold text-slate-700 transition hover:bg-slate-50"
           >
             Register
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -94,12 +95,7 @@ function TraineeRoute() {
   }
 
   if (appUser?.role === "ADMIN") {
-    return (
-      <Navigate
-        to="/admin/dashboard"
-        replace
-      />
-    );
+    return <Navigate to="/admin/dashboard" replace />;
   }
 
   return <Outlet />;
